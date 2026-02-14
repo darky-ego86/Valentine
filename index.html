@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Story 💕</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="hearts-background" id="heartsBackground"></div>
+
+    <!-- Password Lock Screen -->
+    <div class="lock-screen" id="lockScreen">
+        <div class="lock-container">
+            <div class="lock-icon">
+                <svg viewBox="0 0 100 100" class="lock-svg">
+                    <path d="M50 10 Q70 10 70 30 L70 40 L80 40 Q85 40 85 45 L85 85 Q85 90 80 90 L20 90 Q15 90 15 85 L15 45 Q15 40 20 40 L30 40 L30 30 Q30 10 50 10 Z" 
+                          fill="none" stroke="currentColor" stroke-width="3"/>
+                    <circle cx="50" cy="65" r="6" fill="currentColor"/>
+                    <line x1="50" y1="71" x2="50" y2="80" stroke="currentColor" stroke-width="3"/>
+                </svg>
+            </div>
+            <h1 class="lock-title">Enter the password to unlock our love story ❤️</h1>
+            <input type="password" id="passwordInput" class="password-input" placeholder="Our special memory...">
+            <button onclick="checkPassword()" class="unlock-btn">Unlock 💖</button>
+            <p class="lock-message" id="lockMessage"></p>
+        </div>
+    </div>
+
+    <!-- Main Content (Hidden until unlocked) -->
+    <div class="main-content" id="mainContent">
+        <!-- Fixed Music Player -->
+        <div class="music-player" id="musicPlayer">
+            <div class="music-controls">
+                <button class="music-btn" id="playPauseBtn" onclick="toggleMusic()">
+                    <span class="play-icon">▶️</span>
+                    <span class="pause-icon" style="display: none;">⏸️</span>
+                </button>
+                <div class="music-info">
+                    <span class="music-icon">🎵</span>
+                    <span class="music-title">Romantic Melody</span>
+                </div>
+                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="30">
+                <label for="musicUpload" class="upload-music-btn">📁</label>
+                <input type="file" id="musicUpload" accept="audio/*" style="display: none;">
+            </div>
+            <audio id="audioPlayer" loop>
+                <source src="assets/romantic-music.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Our Beautiful Love Story</h1>
+                <p class="hero-subtitle">Every moment with you is a precious memory ✨</p>
+                <div class="scroll-indicator">↓</div>
+            </div>
+        </section>
+
+        <!-- Memories Section -->
+        <section class="section memories-section" id="memoriesSection">
+            <h2 class="section-title">Our Beautiful Memories 📸</h2>
+            <div class="upload-container">
+                <label for="imageUpload" class="upload-btn">
+                    <span>📷 Add New Memory</span>
+                </label>
+                <input type="file" id="imageUpload" accept="image/*" multiple style="display: none;">
+            </div>
+            <div class="memories-grid" id="memoriesGrid"></div>
+        </section>
+
+        <!-- Love Notes Section -->
+        <section class="section love-notes-section" id="loveNotesSection">
+            <h2 class="section-title">Love Notes 💌</h2>
+            <div class="add-note-container">
+                <textarea id="newNoteText" class="note-textarea" placeholder="Write a love note..."></textarea>
+                <button onclick="addLoveNote()" class="add-note-btn">Add Note 💕</button>
+            </div>
+            <div class="notes-container" id="notesContainer"></div>
+        </section>
+
+        <!-- Game Section -->
+        <section class="section game-section" id="gameSection">
+            <h2 class="section-title">Heart Catch Game 🎮</h2>
+            <p class="game-instructions">Use ← → arrow keys to catch falling hearts!</p>
+            <div class="game-stats">
+                <div class="stat">Score: <span id="gameScore">0</span></div>
+                <div class="stat">High Score: <span id="highScore">0</span></div>
+            </div>
+            <button onclick="startGame()" class="start-game-btn" id="startGameBtn">Start Game 💖</button>
+            <canvas id="gameCanvas" width="600" height="400"></canvas>
+            <div class="game-message" id="gameMessage"></div>
+        </section>
+
+        <!-- Surprise Section -->
+        <section class="section surprise-section" id="surpriseSection">
+            <h2 class="section-title">Special Surprise 🎁</h2>
+            <button onclick="showSurprise()" class="surprise-btn">Click for a Surprise 💝</button>
+        </section>
+
+
+    </div>
+
+    <!-- Surprise Modal -->
+    <div class="surprise-modal" id="surpriseModal">
+        <div class="surprise-content">
+            <button class="close-surprise" onclick="closeSurprise()">×</button>
+            <div class="surprise-message">
+                <h1 class="surprise-title">I choose you.</h1>
+                <h2 class="surprise-subtitle">Today. Tomorrow. Always.</h2>
+                <div class="heart-burst" id="heartBurst"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="close-lightbox" onclick="closeLightbox()">×</button>
+        <img src="" alt="Memory" id="lightboxImg">
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
